@@ -1,0 +1,19 @@
+<div *ngIf="data" class="container">
+
+
+
+  <div *ngFor="let coin of objectKeys(data)">
+    <span>{{coin}} - USD {{data[coin].USD}}</span>
+    <div class="chartsCtn"></div>
+    <select [(ngModel)]="curency"
+            (ngModelChange)="c($event)"
+            (change)="changeCurency(currency)">
+      <option value="BTC">BTC</option>
+      <option value="ETH">ETH</option>
+      <option value="EOS">EOS</option>
+    </select>
+    <button (click)="getHistory(currency)">show history</button>
+    <canvas #lineChart>{{ chart }}</canvas>
+
+  </div>
+</div>
